@@ -14,3 +14,11 @@ after_success:
   - docker build -t akshay/multi-nginx ./nginx
   - docker build -t akshay/multi-server ./server
   - docker build -t akshay/multi-worker ./worker
+
+  #Log in to docker cli with one single command
+  - echo "$Docker_password" | docker login -u "$Docker_ID" --password-stdin
+
+  - docker push akshay/multi-client
+  - docker push akshay/multi-nginx
+  - docker push akshay/multi-server
+  - docker push akshay/multi-worker
